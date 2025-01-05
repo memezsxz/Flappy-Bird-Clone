@@ -8,6 +8,7 @@ public class BirdScript : MonoBehaviour
     public LogicManager logic;
     public bool isAlive = true;
     public AudioSource audio;
+    public Animator WingAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,11 +33,11 @@ public class BirdScript : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D other)
     {
+        WingAnimator.enabled = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Stop();
         audio.Play();
         GetComponent<CircleCollider2D>().enabled = false;
         logic.gameOver();
         isAlive = false;
-        
     }
 }
