@@ -35,6 +35,7 @@ public class BirdScript : MonoBehaviour
     {
         WingAnimator.enabled = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Stop();
+        audio.enabled = true;
         audio.Play();
         GetComponent<CircleCollider2D>().enabled = false;
         logic.gameOver();
