@@ -20,6 +20,7 @@ public class BirdScript : MonoBehaviour
     void Update()
     {
         moveUP();
+        logic.PauseGame();
     }
 
     void moveUP()
@@ -41,4 +42,5 @@ public class BirdScript : MonoBehaviour
         logic.gameOver();
         isAlive = false;
     }
+    
 }

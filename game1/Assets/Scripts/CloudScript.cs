@@ -19,7 +19,7 @@ public class CloudScript : MonoBehaviour
             return;
         }
         
-        transform.Translate((Vector3.left * Time.deltaTime) * _speed);
+        transform.Translate((Vector3.left * Time.unscaledDeltaTime) * _speed);
     }
     
     public void StartFloating(float speed, float endPosX)

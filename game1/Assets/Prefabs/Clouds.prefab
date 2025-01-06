@@ -79,4 +79,4 @@ MonoBehaviour:
   endPoint: {fileID: 827266830753367509}
   cloudPrefab:
   - {fileID: 4495668468279848408, guid: b07794644dfff4222bbea2eb02da841f, type: 3}
-  spawnIntreval: 1.5
+  spawnInterval: 1.5

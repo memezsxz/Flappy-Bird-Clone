@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CloudGeneratorScript : MonoBehaviour
 {
     [SerializeField] private GameObject endPoint;
     [SerializeField] private GameObject[] cloudPrefab;
-    [SerializeField] private float spawnIntreval;
+    [SerializeField] private float spawnInterval;
     private Vector3 _startPos;
     private float _ebdPosX;
     private float _halfScreenHeight;
@@ -18,7 +20,17 @@ public class CloudGeneratorScript : MonoBehaviour
         _halfScreenHeight = Camera.main.orthographicSize; // 15
         _halfScreenWidth = Camera.main.aspect * _halfScreenHeight;
         Prewarm();
-        Invoke("AttemptSpawn", spawnIntreval);
+        // InvokeRepeating(nameof(AttemptSpawn), 0, spawnIntreval);
+        StartCoroutine(SpawnCoroutine());
+    }
+    
+    IEnumerator SpawnCoroutine()
+    {
+        while (true)
+        {
+            AttemptSpawn();
+            yield return new WaitForSecondsRealtime(spawnInterval);
+        }
     }
 
     // Update is called once per frame
@@ -41,8 +53,6 @@ public class CloudGeneratorScript : MonoBehaviour
     {
         // we can do checking here before calling the spawn
         SpawnCloud(_startPos);
-
-        Invoke("AttemptSpawn", spawnIntreval);
     }
 
     void Prewarm()
